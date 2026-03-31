@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Fjalla_One } from 'next/font/google'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -11,6 +12,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const fjallaOne = Fjalla_One({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-logo',
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,7 +34,17 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <header>
+          <section className="bg-gray-900 m-2 p-5 rounded-[10px]">
+            <h1 className={`text-4xl ${fjallaOne.className}`} style={{ color: 'var(--color-logo)' }}>ADAVERSE</h1>
+          </section>
+        </header>
+
+        <div className="m-8">
+        {children}
+        </div>
+      </body>
     </html>
   );
 }
