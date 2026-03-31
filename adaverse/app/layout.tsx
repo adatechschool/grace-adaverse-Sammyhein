@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Fjalla_One } from 'next/font/google'
+import ButtonProject from "./components/ButtonProjects";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,8 +37,11 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <header>
-          <section className="bg-gray-900 m-2 p-5 rounded-[10px]">
+          <section className="bg-(--bg-gray) m-2 p-5 rounded-[10px] flex items-center justify-between">
             <h1 className={`text-4xl ${fjallaOne.className}`} style={{ color: 'var(--color-logo)' }}>ADAVERSE</h1>
+            <section>
+            <ButtonProject/>
+            </section>
           </section>
         </header>
 
