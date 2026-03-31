@@ -46,3 +46,5 @@ export const studentPromotionsRelations = relations(studentProjects, ({ one }) =
 		references: [promotionsAda.id],
 	}),
 }));
+
+let hello = "hello"
