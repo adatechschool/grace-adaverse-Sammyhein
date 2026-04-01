@@ -15,10 +15,10 @@ export const promotionsAda = pgTable("promotions_ada", {
 export const studentProjects = pgTable("student_projects", {
     id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
     title: varchar({ length: 50 }).notNull(),
-    image: text("image_url").notNull(),
+    image: text("image_url"),
     slug: varchar({ length: 50 }).notNull(),
     github: text("github_url").notNull(),
-    demo: text("demo_url").notNull(),
+    demo: text("demo_url"),
     dateCreation : date("date_creation").notNull(),
     datePublish : date("date_published").notNull().default(sql`CURRENT_DATE`),
     adaProjectsId: integer('ada_projects_id').references(() => adaProjects.id).notNull(),
