@@ -1,0 +1,1 @@
+ALTER TABLE "student_projects" ALTER COLUMN "date_creation" DROP NOT NULL;

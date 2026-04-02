@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef } from "react"
-import type { Project, Promotion } from "@/src/types"
+import type { Project, Promotion } from "@/src/interfaces/types"
 
 export default  function ButtonProject({promotions, projects} : { promotions: Promotion[], projects : Project[]}){
     const dialogRef = useRef<HTMLDialogElement>(null)
