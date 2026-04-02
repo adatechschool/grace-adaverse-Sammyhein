@@ -1,5 +1,10 @@
-export type List = {
- id:number,
- name:string,
- title:string
+export type Promotion = { 
+    id: number; 
+    name: string; 
+    date: string 
+}
+
+export type Project = { 
+    id: number; 
+    title: string; 
 }

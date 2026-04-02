@@ -3,10 +3,20 @@
 import { db } from "@/src/data/drizzle"
 import { List } from "@/src/types"
 
-export default function SelectHTML({list} : { list : List}){
+export default async function SelectHTML({list} : any){
+    const data = await db.select().from(list)
+    console.log(data)
 
     return (
-        <option value=""></option>
+        <>
+        <option value="hello">hello</option>
+        {/* {data.map((option)=>{
+            return(
+                <option value={option.id}></option>
+            )
+        })} */}
+        
+        </>
     )
 
 
