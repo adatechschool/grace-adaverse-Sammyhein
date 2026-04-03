@@ -1,6 +1,4 @@
 import { db } from "@/src/data/drizzle";
-import { adaProjects, promotionsAda, studentProjects } from "@/src/data/schema";
-import { eq } from "drizzle-orm";
 
 export default async function Home() {
 
