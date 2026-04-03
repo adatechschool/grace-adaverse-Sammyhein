@@ -29,8 +29,12 @@ export const postProject = async(formData: FormData) => {
 
     //Si jamais la promo ou le projet sont introuvables même si ils devraient exister n'importe quand
     if (!promoAdaMatch || !projectAdaMatch) {
-  throw new Error("Promo ou projet introuvable")
-}
+        throw new Error("Promo ou projet introuvable")
+    }
+
+    //on fait des testing avant d'envoyer directement à la base de donnée
+
+    
 
     await db.insert(studentProjects).values({
         title: title,
@@ -40,6 +44,5 @@ export const postProject = async(formData: FormData) => {
         adaProjectsId: projectAdaMatch.id,
         promotionAdaId: promoAdaMatch.id
     })
-    refresh()
-    
+    refresh() 
 }
