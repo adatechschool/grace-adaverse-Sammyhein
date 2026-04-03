@@ -34,11 +34,12 @@ export const postProject = async(formData: FormData) => {
 
     //on fait des testing avant d'envoyer directement à la base de donnée
 
-    
+
 
     await db.insert(studentProjects).values({
         title: title,
         slug: title+promoAda+projectAda,
+        image: urlGitHub + "/blob/main/thumbnail.png?raw=true",
         github: urlGitHub,
         demo: urlDemo,
         adaProjectsId: projectAdaMatch.id,
