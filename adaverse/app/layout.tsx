@@ -5,6 +5,7 @@ import { Fjalla_One } from 'next/font/google'
 import ButtonProject from "./components/ButtonProjects";
 import { db } from "@/src/data/drizzle";
 import { adaProjects, promotionsAda } from "@/src/data/schema";
+import { eq } from "drizzle-orm";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,18 @@ export default async function RootLayout({
   const promotions = await db.select().from(promotionsAda)
   //console.log(promotions)
   const projects = await db.select().from(adaProjects)
+
+  //deux manière pour récupérer l'ID selon une condition
+  // const [promoAdaId] = await db.select().from(promotionsAda).where(eq(promotionsAda.name, "Frida"))
+
+  // console.log(promoAdaId.id)
+
+  // const [test] = await db.query.promotionsAda.findMany({
+  //   where: eq(promotionsAda.name, "Frida")
+  // })
+
+  // console.log(test.id)
+
   return (
     <html
       lang="en"
@@ -42,7 +55,7 @@ export default async function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <header>
-          <section className="bg-(--bg-gray) m-2 p-5 rounded-[10px] flex items-center justify-between">
+          <section className="bg-(--bg-gray) m-2 p-5 rounded-[10px] flex items-center justify-between gap-5">
             <h1 className={`text-4xl ${fjallaOne.className}`} style={{ color: 'var(--color-logo)' }}>ADAVERSE</h1>
             <section>
             <ButtonProject promotions={promotions} projects={projects}/>

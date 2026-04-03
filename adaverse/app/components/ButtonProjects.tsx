@@ -2,19 +2,28 @@
 
 import { useRef } from "react"
 import type { Project, Promotion } from "@/src/interfaces/types"
+import { postProject } from "../actions/postProject"
 
-export default  function ButtonProject({promotions, projects} : { promotions: Promotion[], projects : Project[]}){
+export default function ButtonProject({promotions, projects} : { promotions: Promotion[], projects : Project[]}){
     const dialogRef = useRef<HTMLDialogElement>(null)
+    const formRef= useRef<HTMLFormElement>(null)
+
+    //on fait une async function pour fermer le formulaire et le remettre à 0 après avoir posté un projet , c'est pour cela que dans form action ont met handleSubmit et pas postProject directement 
+    async function handleSubmit(formData: FormData) {
+    await postProject(formData)
+    dialogRef.current?.close()
+    formRef.current?.reset() // remet le formulaire à zéro
+    }
 
     return(
         <>
-        <button onClick={() => dialogRef.current?.showModal()} className="bg-(--color-logo) p-4 rounded-2xl text-(--bg-gray) font-black uppercase">Proposer un projet</button>
+        <button onClick={() => dialogRef.current?.showModal()} className="bg-(--color-logo) p-4 rounded-2xl text-(--bg-gray) font-black uppercase">Proposer un projet</button> 
 
         <dialog ref={dialogRef} className="rounded-[10px] place-self-center-safe text-(--bg-gray) w-2xl">
 
             <button onClick={() => dialogRef.current?.close()} className="float-right font-black m-2 p-2 border-2 rounded-full">X</button>
 
-            <form className="relative p-8 flex flex-col">
+            <form action={handleSubmit} className="relative p-8 flex flex-col">
                 <h1 className="text-(--color-logo) uppercase font-black mt-8 mb-8">Proposer un projet</h1>
 
                 <label htmlFor="title">Titre <span className="text-(--color-logo) font-black">*</span></label>
@@ -31,7 +40,7 @@ export default  function ButtonProject({promotions, projects} : { promotions: Pr
                 <select name="promo" id="promo" className="border border-gray-400 rounded-xl p-2 mb-4 bg-(--bg-gray) text-white">
                     {promotions.map((promotion) => {
                         return(
-                            <option value={promotion.name.toLowerCase()} key={promotion.id}>{promotion.name}</option>
+                            <option value={promotion.name} key={promotion.id}>{promotion.name}</option>
                         )
                     })}
                 </select>
@@ -40,12 +49,12 @@ export default  function ButtonProject({promotions, projects} : { promotions: Pr
                 <select name="project" id="project" className="border border-gray-400 rounded-xl p-2 mb-4 bg-(--bg-gray) text-white">
                     {projects.map((project) => {
                         return(
-                            <option value={project.title.toLowerCase()} key={project.id}>{project.title}</option>
+                            <option value={project.title} key={project.id}>{project.title}</option>
                         )
                     })}
                 </select>
 
-                <button type="submit" className="  bg-(--color-logo) w-30 p-2 rounded-2xl self-end mb-4 text-white font-black uppercase">Valider</button>
+                <button type="submit" className="  bg-(--color-logo) w-30 p-2 rounded-2xl self-end mb-4 text-white font-black uppercase" >Valider</button>
 
                 <p className="absolute font-black right-0 bottom-3 text-(--color-logo)">* : Champ Obligatoire</p>
 
