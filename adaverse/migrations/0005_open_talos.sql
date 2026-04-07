@@ -1,0 +1,1 @@
+ALTER TABLE "student_projects" ALTER COLUMN "slug" SET DATA TYPE varchar(255);

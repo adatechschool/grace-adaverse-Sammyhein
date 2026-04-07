@@ -38,7 +38,7 @@ export const postProject = async(formData: FormData) => {
 
     await db.insert(studentProjects).values({
         title: title,
-        slug: title.replaceAll(" ", "_")+promoAda.replaceAll(" ", "_")+projectAda.replaceAll(" ", "_"),
+        slug: title.replaceAll(" ", "_")+promoAda.replaceAll(" ", "_")+projectAda.replaceAll(" ", "_") + crypto.randomUUID(),
         image: urlGitHub + "/blob/main/thumbnail.png?raw=true",
         github: urlGitHub,
         demo: urlDemo,

@@ -16,7 +16,7 @@ export const studentProjects = pgTable("student_projects", {
     id: integer("id").primaryKey().generatedAlwaysAsIdentity(),
     title: varchar({ length: 50 }).notNull(),
     image: text("image_url").notNull(),
-    slug: varchar({ length: 50 }).notNull(),
+    slug: varchar({ length: 255 }).notNull(),
     github: text("github_url").notNull(),
     demo: text("demo_url"),
     dateCreation : date("date_creation").notNull().default(sql`CURRENT_DATE`),

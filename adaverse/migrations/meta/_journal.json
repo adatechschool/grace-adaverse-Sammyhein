@@ -36,6 +36,13 @@
       "when": 1775566853751,
       "tag": "0004_dapper_vindicator",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1775569316455,
+      "tag": "0005_open_talos",
+      "breakpoints": true
     }
   ]
 }

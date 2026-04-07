@@ -35,10 +35,10 @@ export default async function Home() {
                       <li key={student.id}>
                         <section className="relative max-w-80">
                           <p className="absolute right-2 top-3 bg-(--bg-gray) p-2 rounded-2xl ">{student.promotion.name}</p>
-                          <ProjectImage urlGitHub={student.image} alt={student.title}/>
+                          <ProjectImage urlGitHub={student.image} alt={student.title} />
                         </section>
 
-                        <h2>{student.title}</h2>
+                        <h2 className="font-bold">{student.title}</h2>
                         <p>{student.datePublish.split("-").reverse().join("/")}</p>
                       </li>
                       </Link>
