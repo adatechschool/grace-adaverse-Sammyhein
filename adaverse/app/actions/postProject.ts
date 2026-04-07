@@ -34,11 +34,14 @@ export const postProject = async(formData: FormData) => {
 
     //on fait des testing avant d'envoyer directement à la base de donnée
 
-
+    // cette fonction met sert à enlever les accents pour mon slug car les url n'aimes pas les accents
+    function removeAccents(str: string): string {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    }
 
     await db.insert(studentProjects).values({
         title: title,
-        slug: title.replaceAll(" ", "_")+promoAda.replaceAll(" ", "_")+projectAda.replaceAll(" ", "_") + crypto.randomUUID(),
+        slug: removeAccents(title).replaceAll(" ", "_")+ removeAccents(promoAda).replaceAll(" ", "_")+ removeAccents(projectAda).replaceAll(" ", "_") + crypto.randomUUID(),
         image: urlGitHub + "/blob/main/thumbnail.png?raw=true",
         github: urlGitHub,
         demo: urlDemo,
