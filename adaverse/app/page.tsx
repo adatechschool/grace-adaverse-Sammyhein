@@ -2,6 +2,7 @@ import { db } from "@/src/data/drizzle";
 import { adaProjects, studentProjects, promotionsAda } from "@/src/data/schema";
 import { studentWithElse } from "@/src/interfaces/types";
 import Link from "next/link";
+import ProjectImage from "./components/ProjectImage";
 
 
 export default async function Home() {
@@ -34,11 +35,7 @@ export default async function Home() {
                       <li key={student.id}>
                         <section className="relative max-w-80">
                           <p className="absolute right-2 top-3 bg-(--bg-gray) p-2 rounded-2xl ">{student.promotion.name}</p>
-                          <img src=
-                          // {student.image ?? 
-                            "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                            // } 
-                            alt={student.title} className="w-full h-40 object-cover"/>
+                          <ProjectImage urlGitHub={student.image} alt={student.title}/>
                         </section>
 
                         <h2>{student.title}</h2>
