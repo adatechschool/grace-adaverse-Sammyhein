@@ -19,8 +19,8 @@ export const studentProjects = pgTable("student_projects", {
     slug: varchar({ length: 50 }).notNull(),
     github: text("github_url").notNull(),
     demo: text("demo_url"),
-    dateCreation : date("date_creation"),
-    datePublish : date("date_published").notNull().default(sql`CURRENT_DATE`),
+    dateCreation : date("date_creation").notNull().default(sql`CURRENT_DATE`),
+    datePublish : date("date_published"),
     adaProjectsId: integer('ada_projects_id').references(() => adaProjects.id).notNull(),
     promotionAdaId: integer('promotion_ada_id').references(() => promotionsAda.id).notNull()
 })

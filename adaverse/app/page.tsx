@@ -1,7 +1,8 @@
 import { db } from "@/src/data/drizzle";
 import { adaProjects, studentProjects, promotionsAda } from "@/src/data/schema";
-import { InferSelectModel } from "drizzle-orm";
 import { studentWithElse } from "@/src/interfaces/types";
+import Link from "next/link";
+
 
 export default async function Home() {
 
@@ -12,7 +13,7 @@ export default async function Home() {
     adaProject: true,
     promotion: true,
   },
-  orderBy: (studentProjects, {asc})=>[asc(studentProjects.id)]
+  orderBy: (studentProjects, {desc})=>[desc(studentProjects.datePublish)]
 }) as studentWithElse[]
 
   console.log(dataResult)
@@ -27,17 +28,23 @@ export default async function Home() {
             <ul className="flex flex-row gap-5 overflow-y-auto">
               {
                 dataResult.map((student)=>{
-                  if(student.adaProject.title === project.title){
+                  if(student.adaProject.title === project.title && student.datePublish){
                     return(
+                      <Link key={student.slug} href={`/paths/project/${student.slug}`}>
                       <li key={student.id}>
                         <section className="relative max-w-80">
                           <p className="absolute right-2 top-3 bg-(--bg-gray) p-2 rounded-2xl ">{student.promotion.name}</p>
-                          <img src={student.image ?? "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} alt={student.title} className="w-full h-40 object-cover"/>
+                          <img src=
+                          // {student.image ?? 
+                            "https://images.unsplash.com/photo-1587620962725-abab7fe55159?q=80&w=2831&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            // } 
+                            alt={student.title} className="w-full h-40 object-cover"/>
                         </section>
 
                         <h2>{student.title}</h2>
                         <p>{student.datePublish.split("-").reverse().join("/")}</p>
                       </li>
+                      </Link>
                     )
                   }
                 })
