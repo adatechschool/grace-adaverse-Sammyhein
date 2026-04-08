@@ -6,9 +6,9 @@ import { studentWithElse } from "@/src/interfaces/types"
 import { eq } from "drizzle-orm"
 import Link from "next/link"
 
-export default async function Adapage(){
+export default async function Adaquiz(){
 
-    const [projects] = await db.select().from(adaProjects).where(eq(adaProjects.title, "Adapage"))
+    const [projects] = await db.select().from(adaProjects).where(eq(adaProjects.title, "Adaquiz"))
 
     const dataResult = await db.query.studentProjects.findMany({
       with: {
@@ -23,7 +23,7 @@ export default async function Adapage(){
     return(
         <>
         <h1 className="uppercase text-2xl font-black place-self-center-safe
-        mb-5">Projet<span className="ml-2 text-(--color-logo)">Pokedex</span></h1>
+        mb-5">Projet<span className="ml-2 text-(--color-logo)">Adaquiz</span></h1>
         <ul className="flex flex-wrap gap-5 justify-evenly">
         {dataResult.map((student) => {
             if(student.datePublish){

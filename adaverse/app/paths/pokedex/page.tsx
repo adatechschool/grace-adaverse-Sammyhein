@@ -6,9 +6,9 @@ import { studentWithElse } from "@/src/interfaces/types"
 import { eq } from "drizzle-orm"
 import Link from "next/link"
 
-export default async function Adapage(){
+export default async function Pokedex(){
 
-    const [projects] = await db.select().from(adaProjects).where(eq(adaProjects.title, "Adapage"))
+    const [projects] = await db.select().from(adaProjects).where(eq(adaProjects.title, "Pokedex"))
 
     const dataResult = await db.query.studentProjects.findMany({
       with: {

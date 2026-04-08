@@ -14,6 +14,7 @@ export default function ButtonPromotions() {
       <option value="/paths/adapage">Adapage</option>
       <option value="/paths/adataviz">Adataviz</option>
       <option value="/paths/adaquiz">Adaquiz</option>
+      <option value="/paths/pokedex">Pokedex</option>
     </select>
   )
 
