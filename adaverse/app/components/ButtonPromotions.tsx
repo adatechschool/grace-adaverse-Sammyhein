@@ -10,12 +10,11 @@ export default function ButtonPromotions() {
       defaultValue=""
       className="bg-(--bg-gray) p-4 rounded-2xl text-white font-black uppercase border-solid border-2 border-(--color-logo)"
     >
-      <option value="" disabled>Promotions</option>
+      <option value="" disabled>Projets</option>
       <option value="/paths/adapage">Adapage</option>
       <option value="/paths/adataviz">Adataviz</option>
       <option value="/paths/adaquiz">Adaquiz</option>
     </select>
   )
-  // "bg-(--color-logo) p-4 rounded-2xl text-(--bg-gray) font-black uppercase"
 
 }
