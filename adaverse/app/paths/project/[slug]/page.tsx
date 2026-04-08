@@ -17,7 +17,7 @@ export default async function Slug({params}: {params: Promise<{slug: string}>}){
       where: eq(studentProjects.slug, slug)
     }) as studentWithElse
 
-    console.log(dataResult)
+    // console.log(dataResult)
 
     return(
         <article className="place-self-center-safe">

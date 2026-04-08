@@ -7,6 +7,7 @@ import { db } from "@/src/data/drizzle";
 import { adaProjects, promotionsAda } from "@/src/data/schema";
 import { eq } from "drizzle-orm";
 import Link from "next/link";
+import ButtonPromotions from "./components/ButtonPromotions";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -60,7 +61,8 @@ export default async function RootLayout({
             <Link href={"/"}>
               <h1 className={`text-4xl ${fjallaOne.className}`} style={{ color: 'var(--color-logo)' }}>ADAVERSE</h1>
             </Link>
-            <section>
+            <section className="flex flex-row gap-5">
+            <ButtonPromotions/>
             <ButtonProject promotions={promotions} projects={projects}/>
             </section>
           </section>

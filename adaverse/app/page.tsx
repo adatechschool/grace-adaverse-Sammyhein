@@ -5,6 +5,7 @@ import Link from "next/link";
 import ProjectImage from "./components/ProjectImage";
 
 
+
 export default async function Home() {
 
   const listProjects = await db.select().from(adaProjects)
@@ -17,8 +18,8 @@ export default async function Home() {
   orderBy: (studentProjects, {desc})=>[desc(studentProjects.datePublish)]
 }) as studentWithElse[]
 
-  console.log(dataResult)
-  console.log(listProjects)
+  // console.log(dataResult)
+  // console.log(listProjects)
 
   return (
     <article>
