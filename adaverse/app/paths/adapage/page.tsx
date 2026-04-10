@@ -22,7 +22,7 @@ export default async function Adapage(){
     return(
         <>
         <h1 className="uppercase text-2xl font-black place-self-center-safe
-        mb-5">Projet<span className="ml-2 text-(--color-logo)">Pokedex</span></h1>
+        mb-5">Projet<span className="ml-2 text-(--color-logo)">Adapage</span></h1>
         <ul className="flex flex-wrap gap-5 justify-evenly">
         {dataResult.map((student) => {
             if(student.datePublish){

@@ -3,6 +3,7 @@ import { adaProjects, studentProjects, promotionsAda } from "@/src/data/schema";
 import { studentWithElse } from "@/src/interfaces/types";
 import Link from "next/link";
 import ProjectImage from "./components/ProjectImage";
+import HomePage from "./components/HomePage";
 
 
 
@@ -21,36 +22,10 @@ export default async function Home() {
   // console.log(dataResult)
   // console.log(listProjects)
 
-  return (
-    <article>
-      {listProjects.map((project)=>{
-        return(
-          <section key={project.id} className="mb-5">
-            <h1 className="font-black text-2xl">{project.title}</h1>
-            <ul className="flex flex-row flex-nowrap gap-5 overflow-x-auto">
-              {
-                dataResult.map((student)=>{
-                  if(student.adaProject.title === project.title && student.datePublish){
-                    return(
-                      <Link key={student.slug} href={`/paths/project/${student.slug}`}>
-                      <li key={student.id} className="shrink-0 min-w-50">
-                        <section className="relative max-w-80 ">
-                          <p className="absolute right-2 top-3 bg-(--bg-gray) p-2 rounded-2xl ">{student.promotion.name}</p>
-                          <ProjectImage urlGitHub={student.image} alt={student.title} />
-                        </section>
+  const listPromotions = await db.select().from(promotionsAda)
+  console.log(listPromotions)
 
-                        <h2 className="font-bold">{student.title}</h2>
-                        <p>{student.datePublish.split("-").reverse().join("/")}</p>
-                      </li>
-                      </Link>
-                    )
-                  }
-                })
-              }
-            </ul>
-          </section>
-        )
-      })}
-    </article>
+  return (
+    <HomePage listProjects={listProjects} listPromotions={listPromotions} dataResult={dataResult} />
   );
 }

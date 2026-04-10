@@ -1,7 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation"
 
-export default function ButtonPromotions() {
+export default function SelectProjects() {
   const router = useRouter()
 
   return (
