@@ -43,7 +43,7 @@ export default function HomePage({listPromotions, listProjects, dataResult} : Pr
                         <Link key={student.slug} href={`/paths/project/${student.slug}`}>
                         <li key={student.id} className="shrink-0 min-w-50">
                           <section className="relative max-w-80 ">
-                            <p className="absolute right-2 top-3 bg-(--bg-gray) p-2 rounded-2xl ">{student.promotion.name}</p>
+                            <p className="absolute right-2 top-3 bg-(--bg-gray) p-2 rounded-2xl border-solid border-2 border-white">{student.promotion.name}</p>
                             <ProjectImage urlGitHub={student.image} alt={student.title} />
                           </section>
 
