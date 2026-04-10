@@ -26,3 +26,22 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Scrollbar personnalisée */
+.custom-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #d986dd6c; /* track légèrement visible */
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-logo);
+  border-radius: 999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: white;
+}

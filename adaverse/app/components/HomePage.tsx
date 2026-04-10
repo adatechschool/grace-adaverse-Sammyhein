@@ -35,7 +35,7 @@ export default function HomePage({listPromotions, listProjects, dataResult} : Pr
           return(
             <section key={project.id} className="mb-5">
               <h1 className="font-black text-2xl">{project.title}</h1>
-              <ul className="flex flex-row flex-nowrap gap-5 overflow-x-auto">
+              <ul className="flex flex-row flex-nowrap gap-5 overflow-x-auto custom-scrollbar pb-3">
                 {
                   dataFiltered.map((student)=>{
                     if(student.adaProject.title === project.title && student.datePublish){
