@@ -27,6 +27,14 @@ export const postProject = async(formData: FormData) => {
     //et donc de la même manière , on récupère l'id avec :
     // projectAdaMatch.id
 
+    //Ici on va vérifier si l'urlGitHub existe déjà dans la base de donnée et l'empecher d'être inséré si c'est le cas
+
+    const [existingGitHubURL] = await db.select().from(studentProjects).where(eq(studentProjects.github, urlGitHub))
+
+    if(existingGitHubURL){
+        throw new Error("OOPS !!! Ce lien GitHub existe déjà dans notre base de données ! Il est possible que vous ayez déjà publié ce projet ou peut-être quelqu'un d'autre !")
+    }
+
     //Si jamais la promo ou le projet sont introuvables même si ils devraient exister n'importe quand
     if (!promoAdaMatch || !projectAdaMatch) {
         throw new Error("Promo ou projet introuvable")

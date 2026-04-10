@@ -47,9 +47,16 @@ export default function ButtonProject({promotions, projects} : { promotions: Pro
             return // cela empêche à envoyer à la base de donnée s'il y a une erreur
         }
 
+        try{
         await postProject(formData)
         dialogRef.current?.close()
         formRef.current?.reset() // remet le formulaire à zéro
+        }catch(error){
+            //En gros ici on vérifie si une erreur est reconnue depuis le post de formulaire , c'est en lien direct avec le code de postProject qui regarde si l'url existe déjà dans la base de donnée
+            if(error instanceof Error){
+                setError(error.message)// ← affiche "OOPS !! Ce projet GitHub existe déjà..." que l'on peut retrouver dans postProject
+            }
+        }
     }
 
     return(

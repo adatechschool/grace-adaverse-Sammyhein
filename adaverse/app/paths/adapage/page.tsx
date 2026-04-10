@@ -1,5 +1,4 @@
 import ProjectBigImage from "@/app/components/ProjectBigImage"
-import ProjectImage from "@/app/components/ProjectImage"
 import { db } from "@/src/data/drizzle"
 import { adaProjects, studentProjects } from "@/src/data/schema"
 import { studentWithElse } from "@/src/interfaces/types"
